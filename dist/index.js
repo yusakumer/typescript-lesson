@@ -1,3 +1,39 @@
 import "../css/index.css";
-console.log('Hello World!');
+let isOpen = true;
+console.log(isOpen);
+let decimal = 12;
+let float = 12.3;
+console.log(float);
+console.log(decimal);
+let color = "red";
+let greetings = `Hello,${color}`;
+console.log(color);
+console.log(greetings);
+let list = [1, 2, 3, 3];
+let list2 = [1, 2, 3];
+console.log(list);
+console.log(list2);
+let notSure = 4;
+notSure = "nas";
+console.log(notSure);
+let u = undefined;
+let n = null;
+let message = "Hello";
+console.log(typeof message);
+let userid = 3434;
+console.log(typeof userid);
+const printCoord = (pt) => {
+    console.log(pt);
+};
+let p = { x: 3, y: 4 };
+let coord = { x: 34, y: 45 };
+console.log(coord);
+let response = "yes";
+console.log(typeof response);
+let user = { name: "name" };
+console.log(typeof user);
+const add = (x, y) => {
+    return x + y;
+};
+console.log(add(23, 4));
 //# sourceMappingURL=index.js.map
