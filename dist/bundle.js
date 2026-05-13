@@ -12,6 +12,64 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
 
+/***/ },
+
+/***/ "./src/utils/dom.ts"
+/*!**************************!*\
+  !*** ./src/utils/dom.ts ***!
+  \**************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getElementById: () => (/* binding */ getElementById),
+/* harmony export */   getInputElementById: () => (/* binding */ getInputElementById)
+/* harmony export */ });
+/**
+ * id属性からhtml要素を取得する
+ * @param id
+ * @return HTMLelement
+ **/
+const getElementById = (id) => {
+    const element = document.getElementById(id);
+    if (element === null) {
+        throw new Error(`Element with id ${id} not found`);
+    }
+    return element;
+};
+const getInputElementById = (id) => {
+    const element = document.getElementById(id);
+    if (element === null) {
+        throw new Error(`Element with id ${id} not found`);
+    }
+    return element;
+};
+
+
+/***/ },
+
+/***/ "./src/utils/todo.ts"
+/*!***************************!*\
+  !*** ./src/utils/todo.ts ***!
+  \***************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getNewTodo: () => (/* binding */ getNewTodo)
+/* harmony export */ });
+/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ "./src/utils/dom.ts");
+
+/**
+ * DOMのinput要素から新しいTODOの値を取得する
+ */
+const getNewTodo = () => ({
+    name: (0,_dom__WEBPACK_IMPORTED_MODULE_0__.getInputElementById)("new-todo-name").value,
+    person: (0,_dom__WEBPACK_IMPORTED_MODULE_0__.getInputElementById)("new-person").value,
+    deadline: (0,_dom__WEBPACK_IMPORTED_MODULE_0__.getInputElementById)("deadline").value
+});
+
+
 /***/ }
 
 /******/ 	});
@@ -47,6 +105,23 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -67,9 +142,20 @@ var __webpack_exports__ = {};
   \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/index.css */ "./src/css/index.css");
+/* harmony import */ var _utils_todo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/todo */ "./src/utils/todo.ts");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/dom */ "./src/utils/dom.ts");
 
-let isOpen = true;
-console.log(isOpen);
+
+
+const todoList = [];
+document.addEventListener("DOMContentLoaded", () => {
+    const registerButton = (0,_utils_dom__WEBPACK_IMPORTED_MODULE_2__.getElementById)("register");
+    registerButton.addEventListener("click", () => {
+        // 新しいTODOをDOMから取得する
+        todoList.push((0,_utils_todo__WEBPACK_IMPORTED_MODULE_1__.getNewTodo)());
+        // TODO一覧を取得する
+    });
+});
 
 })();
 
