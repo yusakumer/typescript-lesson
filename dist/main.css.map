@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":";;;AAAA;IACI,aAAa;AACjB,C","sources":["webpack://typescript-lesson/./src/css/index.css"],"sourcesContent":["h1 {\n    color: orange;\n}"],"names":[],"sourceRoot":""}

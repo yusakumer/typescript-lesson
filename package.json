@@ -10,7 +10,6 @@
   "devDependencies": {
     "@types/node": "^25.7.0",
     "typescript": "^5.9.3"
-
   },
   "private": true,
   "keywords": [],
@@ -19,6 +18,8 @@
   "description": "",
   "dependencies": {
     "css-loader": "^7.1.4",
+    "html-webpack-plugin": "^5.6.7",
+    "mini-css-extract-plugin": "^2.10.2",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.5.7",
     "webpack": "^5.106.2",

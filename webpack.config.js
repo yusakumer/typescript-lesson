@@ -1,11 +1,13 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin  = require("mini-css-extract-plugin");
 
 module.exports = {
     // 開発モード（ビルドが速く、デバッグしやすい）
     mode: 'development',
 
     // エントリーポイント（ここから読み込みを開始する）
-    entry: './src/index.ts',
+    entry: './src/js/index.ts',
 
     // 出力設定
     output: {
@@ -31,7 +33,7 @@ module.exports = {
             // CSS (.css) の処理
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
         ],
     },
@@ -45,4 +47,11 @@ module.exports = {
 
     // デバッグしやすくするためのソースマップ
     devtool: 'source-map',
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html' // 2. 元となるHTMLファイルを指定
+        }),
+        new MiniCssExtractPlugin(),
+    ],
 };
