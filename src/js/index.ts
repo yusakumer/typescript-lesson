@@ -39,6 +39,13 @@ type Point = {
     y:number
 };
 
+const printCoord = (pt:Point) => {
+    console.log(pt);
+};
+
+let p:Point = {x:3,y:4};
+
+
 let coord:Point = {x:34,y:45};
 console.log(coord);
 
@@ -57,3 +64,9 @@ const add = (x:number, y:number) : number => {
     return x + y;
 };
 console.log(add(23,4));
+
+type person = {
+    name:string,
+    age:number,
+    email?:string
+}

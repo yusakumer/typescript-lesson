@@ -22,6 +22,10 @@ let message = "Hello";
 console.log(typeof message);
 let userid = 3434;
 console.log(typeof userid);
+const printCoord = (pt) => {
+    console.log(pt);
+};
+let p = { x: 3, y: 4 };
 let coord = { x: 34, y: 45 };
 console.log(coord);
 let response = "yes";
