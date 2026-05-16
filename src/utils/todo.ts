@@ -11,6 +11,7 @@ export type TODO = {
 
 /**
  * DOMのinput要素から新しいTODOの値を取得する
+ * @returns Todo
  */
 
 export const getNewTodo = ():TODO => ({
