@@ -22,6 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createElement: () => (/* binding */ createElement),
 /* harmony export */   getElementById: () => (/* binding */ getElementById),
 /* harmony export */   getInputElementById: () => (/* binding */ getInputElementById)
 /* harmony export */ });
@@ -44,6 +45,19 @@ const getInputElementById = (id) => {
     }
     return element;
 };
+/**
+ * 引数に受け取った名前のDOM,textを生成する
+ * @param elementName 要素名
+ * @param textContent　要素のtextcontent
+ * @returns HTMLElement
+ */
+const createElement = (elementName, textContent) => {
+    const element = document.createElement(elementName);
+    if (typeof textContent !== "undefined") {
+        element.textContent = textContent;
+    }
+    return element;
+};
 
 
 /***/ },
@@ -56,18 +70,36 @@ const getInputElementById = (id) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   appendTodoList: () => (/* binding */ appendTodoList),
 /* harmony export */   getNewTodo: () => (/* binding */ getNewTodo)
 /* harmony export */ });
 /* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ "./src/utils/dom.ts");
 
 /**
  * DOMのinput要素から新しいTODOの値を取得する
+ * @returns Todo
  */
 const getNewTodo = () => ({
     name: (0,_dom__WEBPACK_IMPORTED_MODULE_0__.getInputElementById)("new-todo-name").value,
     person: (0,_dom__WEBPACK_IMPORTED_MODULE_0__.getInputElementById)("new-person").value,
     deadline: (0,_dom__WEBPACK_IMPORTED_MODULE_0__.getInputElementById)("deadline").value
 });
+/**
+ *DOMにTODO一覧を表示する
+ */
+const appendTodoList = (todoList) => {
+    todoList.forEach((todo) => {
+        const nameTd = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", todo.name);
+        const personTd = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", todo.name);
+        const deadline = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", todo.name);
+        const tr = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr");
+        tr.appendChild(nameTd);
+        tr.appendChild(personTd);
+        tr.appendChild(deadline);
+        const tbody = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.getElementById)("todo-data");
+        tbody.appendChild(tr);
+    });
+};
 
 
 /***/ }
@@ -154,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // 新しいTODOをDOMから取得する
         todoList.push((0,_utils_todo__WEBPACK_IMPORTED_MODULE_1__.getNewTodo)());
         // TODO一覧を取得する
+        (0,_utils_todo__WEBPACK_IMPORTED_MODULE_1__.appendTodoList)(todoList);
     });
 });
 

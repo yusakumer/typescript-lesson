@@ -1,5 +1,5 @@
 import "../css/index.css";
-import {getNewTodo, TODO} from "../utils/todo";
+import {appendTodoList, getNewTodo, removeTodoListElement, TODO} from "../utils/todo";
 import {getElementById} from "../utils/dom";
 
 const todoList:TODO[] = [];
@@ -9,7 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
     registerButton.addEventListener("click", () => {
         // 新しいTODOをDOMから取得する
         todoList.push(getNewTodo());
+        //すでにある要素を削除する
+        removeTodoListElement();
         // TODO一覧を取得する
+        appendTodoList(todoList);
+
 
     })
 })
