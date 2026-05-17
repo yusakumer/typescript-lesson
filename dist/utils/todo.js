@@ -4,6 +4,7 @@ import { createElement, getElementById, getInputElementById } from "./dom";
  * @returns Todo
  */
 export const getNewTodo = () => ({
+    id: Date.now(),
     name: getInputElementById("new-todo-name").value,
     person: getInputElementById("new-person").value,
     deadline: getInputElementById("deadline").value
@@ -11,15 +12,26 @@ export const getNewTodo = () => ({
 /**
  *DOMにTODO一覧を表示する
  */
-export const appendTodoList = (todoList) => {
+export const appendTodoList = (todoList, deleteTodo) => {
     todoList.forEach((todo) => {
         const nameTd = createElement("td", todo.name);
         const personTd = createElement("td", todo.name);
         const deadline = createElement("td", todo.name);
+        //削除ボタン
+        const deleteButton = createElement("button", "削除");
+        deleteButton.addEventListener("click", () => deleteTodo(todo.id));
+        // deleteButton.addEventListener("click", ()=>{
+        //     todoList  = todoList.filter(_todo => _todo.id !== todo.id);
+        //     removeTodoListElement();
+        //     appendTodoList(todoList);
+        // })
+        const deleteBtnTd = createElement("td");
+        deleteBtnTd.appendChild(deleteButton);
         const tr = createElement("tr");
         tr.appendChild(nameTd);
         tr.appendChild(personTd);
         tr.appendChild(deadline);
+        tr.appendChild(deleteBtnTd);
         const tbody = getElementById("todo-data");
         tbody.appendChild(tr);
     });
